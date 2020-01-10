@@ -34,13 +34,9 @@ namespace PRS_ExtractKeyPhrases
 
         protected static void SaveCSVData(IEnumerable<PRSData> prsData)
         {
-            using (var writer = new StreamWriter(@"c:\temp\output.csv"))
-            {
-                using (var csv = new CsvWriter(writer))
-                {
-                    csv.WriteRecords(prsData);
-                }
-            }
+            using var writer = new StreamWriter(@"c:\temp\output.csv");
+            using var csv = new CsvWriter(writer);
+            csv.WriteRecords(prsData);
         }
         protected static async Task<IEnumerable<PRSData>> ScrapeySracpeFace(IEnumerable<PRSData> prsData)
         {
